@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Montserrat&family=Playfair+Display:ital,wght@1,400;1,500&family=Raleway:wght@300;400;500;600;700&family=Roboto:wght@300;400;700&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Montserrat&family=Playfair+Display:ital,wght@1,400;1,500&family=Raleway:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+Pro&display=swap');
+
+$linkHoverColor: #ba8b2f;
+$linkHoverBackground: #F8F9F9;
+$navFont: 'Montserrat';
+$navColor: #34495E;
+$paragraphBackground: #e2eef3;
+$paragraphFont: 'Roboto';
+$titleColor: #ba8b2f;
+$titleFont: 'Playfair Display', serif;
+$fotterBackground: #ABB2B9;
+$fotterColor: #424949;
+$galeryBackground: #f9f5f2;
+
+@mixin gridColumns($gridRow, $columnStart, $columnEnd) {
+    grid-row: $gridRow;
+    grid-column-start: $columnStart;
+    grid-column-end: $columnEnd;
+}
+
+@mixin paragraphStyle($paragraphBackground, $paragraphMargin, $paragraphFont) {
+    background-color: $paragraphBackground;
+    margin: $paragraphMargin;
+    font-family: $paragraphFont;
+}
+
+@mixin titleStyle ($titleColor, $titleFont, $titleSize, $titleBackground, $marginTitle) {
+    color: $titleColor;
+    font-family: $titleFont;
+    font-size: $titleSize;
+    background-color: $titleBackground;
+    margin-bottom: $marginTitle;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+}
+
+
+.header {
+    @include gridColumns(1, 1, 5);
+    display: flex;
+    justify-content: center;
+
+    &__title {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+    }
+}
+
+
+
+.navigation {
+    @include gridColumns(2, 1, 5);
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style-type: none;
+        padding: 1rem;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $navColor;
+        padding: 1rem;
+        text-transform: uppercase;
+        font-family: $navFont;
+
+        &:hover {
+            color: $linkHoverColor;
+            background-color: $linkHoverBackground;
+        }
+    }
+
+}
+
+
+.slider-box {
+    object-fit: cover;
+    @include gridColumns(3, 1, 5);
+
+    &__element--image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+.o-nas {
+    @include gridColumns(4, 1, 5);
+
+    &__vznik {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    &__vznik--nadpis {
+        @include titleStyle($titleColor, $titleFont, 1.5rem, $paragraphBackground, 0px);
+    }
+
+    &__vznik--odstavec {
+        @include paragraphStyle ($paragraphBackground , 0, $paragraphFont);
+    }
+
+    &__kdo-jsme {
+        padding: 2rem;
+    }
+
+    &__kdo-jsme--nadpis {
+        @include titleStyle($titleColor, $titleFont, 1.5rem, $paragraphBackground, 0px);
+    }
+
+    &__kdo-jsme--odstavec {
+        @include paragraphStyle ($paragraphBackground , 0, $paragraphFont);
+    }
+
+
+
+    &__foto--image {
+        object-fit: cover;
+        width: 100%;
+        max-height: 500px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+
+.oblasti {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 175px));
+    justify-content: space-evenly;
+
+    @include gridColumns(5, 1, 5);
+    background-color: $galeryBackground;
+
+    &__rok {
+        padding: 0.5rem;
+    }
+
+    &__rok--nadpis {
+        margin-bottom: 0;
+        color: $titleColor;
+        font-size: 1.2rem;
+    }
+
+    &__rok--podnadpis {
+        margin: 0;
+        color: $titleColor;
+        font-size: 0.9rem;
+        font-family: $titleFont;
+    }
+
+    &__seznam {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        color: $navColor;
+        font-family: $paragraphFont;
+
+    }
+
+    &__item {
+        list-style: none;
+    }
+}
+
+
+.galerie {
+    @include gridColumns(6, 1, 5);
+    background-color: $galeryBackground;
+
+
+    &__element {
+        display: flex;
+        flex-direction: column;
+        object-fit: cover;
+        justify-content: flex-end;
+    }
+
+    &__element--image {
+        width: 100%;
+        height: auto;
+        padding-bottom: 0;
+    }
+}
+
+
+.vybaveni {
+    @include gridColumns(7, 1, 5);
+
+    &__info {
+        padding: 2rem;
+    }
+
+    &__info--nadpis {
+        @include titleStyle($titleColor, $titleFont, 1.5rem, $paragraphBackground, 0px);
+    }
+
+    &__info--odstavec {
+        @include paragraphStyle ($paragraphBackground , 0, $paragraphFont);
+    }
+}
+
+
+.baleni {
+    @include gridColumns(8, 1, 5);
+
+    &__info {
+        padding: 2rem;
+    }
+
+    &__info--nadpis {
+        @include titleStyle($titleColor, $titleFont, 1.5rem, $paragraphBackground, 0px);
+    }
+
+    &__info--odstavec {
+        @include paragraphStyle ($paragraphBackground , 0, $paragraphFont);
+    }
+}
+
+
+.kontakt {
+    grid-row: 9;
+}
+
+.fotter {
+    @include gridColumns(10, 1, 5);
+    background-color: $fotterBackground;
+    color: $fotterColor;
+
+    &__social {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__social--icon {
+        padding: 1rem;
+    }
+
+    &__autor {
+        display: flex;
+        justify-content: center;
+        padding: 1.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+
+/*TABLET*/
+@media (min-width: 500px) {
+    .galerie {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(200px, 900px));
+        gap: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+
+/*DESKTOP*/
+@media (min-width: 1000px) {
+
+    .slider-box__element--image {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+    }
+
+    .o-nas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .oblasti {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(150px, 200px));
+        justify-content: space-around;
+
+        &__rok {
+            justify-items: center;
+        }
+    }
+
+    .galerie {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(200px, 500px));
+        gap: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
